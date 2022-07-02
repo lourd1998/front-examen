@@ -6,6 +6,7 @@ import {
   Route,
   } from "react-router-dom";
 import Inicio from './components/Inicio';
+import Tabla from './components/Tabla';
 
 
 
