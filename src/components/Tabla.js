@@ -3,33 +3,41 @@ import React from "react";
 const Tabla = () => {
   const datos = [
     {
-      especialidad: "Gastroenterologia",
-      medico: "Dr. Aguilar Marcelo",
-      nombre: "Ani",
-      nacimiento: "16/09/83",
+      date: "1996-05-01",
+      person: { name: "ana", lastName: "sciangula" },
+      selectedDoc: "Eduardo Pino",
+      selectedSpec: "Gastroenterologia",
     },
     {
-      especialidad: "Cardiologia",
-      medico: "Dr. Eduardo Pino",
-      nombre: "Fa",
-      nacimiento: "20/10/83",
+      date: "2000-08-10",
+      person: { name: "lur", lastName: "murua" },
+      selectedDoc: "Claudua Gomez",
+      selectedSpec: "Dermatologia",
     },
   ];
-
-  const boton = (medicoDato) => {
-    console.log(medicoDato);
-  };
-
-  const Fila = () => {
-    return datos.map((dato, index) => {
+  const editTurno =() => console.log("Editar")
+  const handleDeleteTurno=()=>console.log("Eliminar")
+  const RenderData = () => {
+    return datos?.map((turno, index) => {
       return (
-        <tr key={index}>
-          <td>{dato.especialidad}</td>
-          <td> {dato.medico}</td>
-          <td>{dato.nombre}</td>
-          <td>{dato.nacimiento}</td>
+        <tr key={index} className="border-solid border-[2px] border-black">
+          <td>{turno.selectedDoc}</td>
+          <td>{turno.selectedSpec}</td>
+          <td>{turno.date}</td>
+          <td>{`${turno.person.name} ${turno.person.lastName}`}</td>
           <td>
-            <button onClick={() => boton(dato.medico)}>Editar</button>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+              onClick={() => editTurno(turno, index)}
+            >
+              Editar
+            </button>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+              onClick={() => handleDeleteTurno(index)}
+            >
+              Eliminar
+            </button>
           </td>
         </tr>
       );
@@ -37,23 +45,29 @@ const Tabla = () => {
   };
 
   return (
-    <div>
-      <table>
+    <div className="flex flex-col justify-center items-center h-[30vh] border-solid border-gray-500 bg-red-200 m-5">
+      <table className="table-fixed leading-[21px] h-[350px] lg:text-[1.125rem] w-[100%]">
         <thead>
-          <tr>
-            <th>Especialidad</th>
-            <th>Medico</th>
-            <th>Nombre y Apellido del Paciente</th>
-            <th>Fecha</th>
-            <th>Editar</th>
+          <tr className="border-solid border-[2px] border-black">
+            <th className="text-left lg:pl-[16px] lg:pt-[10px] lg:pb-[29px]">
+              Medico
+            </th>
+            <th className="text-left lg:pl-[16px] lg:pt-[10px] lg:pb-[29px]">
+              Especialidad
+            </th>
+            <th className="text-left lg:pl-[16px] lg:pt-[10px] lg:pb-[29px]">
+              Fecha
+            </th>
+            <th className="text-left lg:pl-[16px] lg:pt-[10px] lg:pb-[29px]">
+              Paciente
+            </th>
           </tr>
         </thead>
         <tbody>
-          <Fila />
+          <RenderData />
         </tbody>
       </table>
     </div>
   );
 };
-
 export default Tabla;
