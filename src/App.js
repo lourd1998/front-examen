@@ -73,11 +73,15 @@ function App() {
         {getTurno ? (
           <Formulario
             isEdit={edit}
-            saveTurno={saveTurno}
+            saveAppointment={saveTurno}
             doctor={doctor}
-            especializacion={especializacion}
+            specialization={especializacion}
+            appointments={turnos}
           />
         ) : null}
+
+       
+
         {seeTurno ? (
           <Tabla
             turnos={turnos}
