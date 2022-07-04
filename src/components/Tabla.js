@@ -1,24 +1,8 @@
 import React from "react";
 
-const Tabla = () => {
-  const datos = [
-    {
-      date: "1996-05-01",
-      person: { name: "ana", lastName: "sciangula" },
-      selectedDoc: "Eduardo Pino",
-      selectedSpec: "Gastroenterologia",
-    },
-    {
-      date: "2000-08-10",
-      person: { name: "lur", lastName: "murua" },
-      selectedDoc: "Claudua Gomez",
-      selectedSpec: "Dermatologia",
-    },
-  ];
-  const editTurno =() => console.log("Editar")
-  const handleDeleteTurno=()=>console.log("Eliminar")
-  const RenderData = () => {
-    return datos?.map((turno, index) => {
+const Tabla = ({ turnos, editTurno, deleteTurno }) => {
+  const Datos = () => {
+    return turnos?.map((turno, index) => {
       return (
         <tr key={index} className="border-solid border-[2px] border-black">
           <td>{turno.selectedDoc}</td>
@@ -34,7 +18,7 @@ const Tabla = () => {
             </button>
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-              onClick={() => handleDeleteTurno(index)}
+              onClick={() => deleteTurno(index)}
             >
               Eliminar
             </button>
@@ -64,7 +48,7 @@ const Tabla = () => {
           </tr>
         </thead>
         <tbody>
-          <RenderData />
+          <Datos />
         </tbody>
       </table>
     </div>
