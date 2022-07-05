@@ -44,7 +44,7 @@ const Formulario = ({ saveAppointment, doctor, specialization, isEdit, appointme
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center h-[100%] border-solid border-gray-500 bg-red-200">
+      <div className="flex flex-col justify-center items-center h-[100%] border-solid border-gray-500 bg-pink-50">
         <div className="flex flex-col">
           <p className="m-3 text-[20px]">Formulario para un Turno Medico</p>
           <div className="m-3 ">
@@ -110,7 +110,7 @@ const Formulario = ({ saveAppointment, doctor, specialization, isEdit, appointme
           </div>
         </div>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+          className="bg-violet-400 hover:bg-violet-600 text-white font-bold py-2 px-4 rounded-full"
           onClick={() => asd()}
         >
           {isEdit !== null ? 'Aceptar' : 'Agendar Turno'}
