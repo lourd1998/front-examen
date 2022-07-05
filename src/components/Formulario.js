@@ -1,6 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 
+import Swal from 'sweetalert2'
+
+
+
 const Formulario = ({ saveAppointment, doctor, specialization, isEdit, appointments }) => {
   const [selectedSpec, setSelectedSpec] = useState(!isEdit ? '' : isEdit?.data.selectedSpec);
   const [selectedDoc, setSelectedDoc] = useState(!isEdit ? '' : isEdit?.data.selectedDoc);
@@ -26,18 +30,34 @@ const Formulario = ({ saveAppointment, doctor, specialization, isEdit, appointme
   const handlePacient = (data) => setPerson({...person, ...data})
 
   const asd = () => {
-    if (!selectedSpec || !selectedDoc )
+    if (!selectedSpec || !selectedDoc ){
       console.log('completar bien');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No has seleccionado a tu medico!',
+      })
+    }
     else {
       if (person.name || person.lastName) {
         if (!appointments.find(appointment => appointment.date === date)) {
           saveAppointment({ selectedSpec, selectedDoc, date, person })
         } else {
           console.log('dia ocupado')
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Este dia no hay turnos!',
+          })
         }
       }
       else {
         console.log('falta nombre y/o apellido')
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No has introducido tu nombre y/o apellido!',
+        })
       }
     }
   }
